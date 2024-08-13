@@ -1,0 +1,615 @@
+Started by timer
+Obtained Jenkinsfile from git https://github.com/tesonep/pharo-image-generator.git
+[Pipeline] Start of Pipeline
+[Pipeline] properties
+[Pipeline] node
+Running on pharo-ci-jenkins2-bootstrap-unix in /builds/workspace/latest-large-image
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Preparing)
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Avoid second fetch
+Checking out Revision 115083389f58ff354e3bc443aa306f78f388a1cb (refs/remotes/origin/master)
+Commit message: "Putting real numbers"
+Cloning repository https://github.com/tesonep/pharo-image-generator.git
+ > git init /builds/workspace/latest-large-image # timeout=10
+Fetching upstream changes from https://github.com/tesonep/pharo-image-generator.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.7.4'
+ > git fetch --tags --progress https://github.com/tesonep/pharo-image-generator.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/tesonep/pharo-image-generator.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 115083389f58ff354e3bc443aa306f78f388a1cb # timeout=10
+ > git rev-list --no-walk 115083389f58ff354e3bc443aa306f78f388a1cb # timeout=10
+[Checks API] No suitable checks publisher found.
+[Pipeline] sh
++ wget -O - get.pharo.org/64/90+vmHeadlessLatest
+--2024-06-12 02:42:01--  http://get.pharo.org/64/90+vmHeadlessLatest
+Resolving get.pharo.org (get.pharo.org)... + bash
+164.132.235.17, 2001:41d0:301::23
+Connecting to get.pharo.org (get.pharo.org)|164.132.235.17|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3146 (3.1K)
+Saving to: STDOUT
+
+     0K ...                                                   100%  477M=0s
+
+2024-06-12 02:42:01 (477 MB/s) - written to stdout [3146/3146]
+
+Downloading the latest 90 Image:
+    http://files.pharo.org/get-files/90/pharoImage-x86_64.zip
+Pharo.image
+Downloading the latest pharoVM:
+	http://files.pharo.org/get-files/90/pharo64-linux-headless-latest.zip
+pharo-vm/pharo
+Creating starter scripts pharo and pharo-ui
+[Pipeline] sh
++ ./pharo Pharo.image save largeImage
+[Pipeline] sh
++ ./pharo largeImage.image eval --save Metacello new baseline: 'ImageGenerator'; repository: 'github://tesonep/pharo-image-generator'; load.
+I got an error while cloning: There was an authentication error while trying to execute the operation: . This happens usually because you didn't provide a valid set of credentials. You may fix this problem in different ways: 1. adding your keys to ssh-agent, executing ssh-add ~/.ssh/id_rsa in your command line.2. adding your keys in settings (open settings browser search for "Use custom SSH keys" andadd your public and private keys).3. using HTTPS instead SSH (Just use an url in the form HTTPS://etc.git). I will try to clone the HTTPS variant.
+MetacelloNotification: Fetched -> BaselineOfImageGenerator-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- https://github.com/tesonep/pharo-image-generator.git[master]
+MetacelloNotification: Loading -> BaselineOfImageGenerator-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- https://github.com/tesonep/pharo-image-generator.git[master]
+MetacelloNotification: Loaded -> BaselineOfImageGenerator-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- https://github.com/tesonep/pharo-image-generator.git[master]
+MetacelloNotification: Loading baseline of BaselineOfImageGenerator...
+MetacelloNotification: Fetched -> ImageGenerator-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- https://github.com/tesonep/pharo-image-generator.git[master]
+MetacelloNotification: Fetched -> BigImageBuilder-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- https://github.com/tesonep/pharo-image-generator.git[master]
+MetacelloNotification: Loading -> ImageGenerator-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- cache
+MetacelloNotification: Loaded -> ImageGenerator-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- cache
+MetacelloNotification: Loading -> BigImageBuilder-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- cache
+MetacelloNotification: Loaded -> BigImageBuilder-CompatibleUserName.1600766496 --- https://github.com/tesonep/pharo-image-generator.git[master] --- cache
+MetacelloNotification: ...finished baseline
+a MetacelloScriptApiExecutor
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Generating the image)
+[Pipeline] sh
++ ./pharo largeImage.image eval --save BigImageBuilder new numberOfPackages: 250;	numberOfClasses: 100; hierarchyDeep: 15; build.
+Processing Package: 1
+Finish Processing Package: 1
+Processing Package: 2
+Finish Processing Package: 2
+Processing Package: 3
+Finish Processing Package: 3
+Processing Package: 4
+Finish Processing Package: 4
+Processing Package: 5
+Finish Processing Package: 5
+Processing Package: 6
+Finish Processing Package: 6
+Processing Package: 7
+Finish Processing Package: 7
+Processing Package: 8
+Finish Processing Package: 8
+Processing Package: 9
+Finish Processing Package: 9
+Processing Package: 10
+Finish Processing Package: 10
+Processing Package: 11
+Finish Processing Package: 11
+Processing Package: 12
+Finish Processing Package: 12
+Processing Package: 13
+Finish Processing Package: 13
+Processing Package: 14
+Finish Processing Package: 14
+Processing Package: 15
+Finish Processing Package: 15
+Processing Package: 16
+Finish Processing Package: 16
+Processing Package: 17
+Finish Processing Package: 17
+Processing Package: 18
+Finish Processing Package: 18
+Processing Package: 19
+Finish Processing Package: 19
+Processing Package: 20
+Finish Processing Package: 20
+Processing Package: 21
+Finish Processing Package: 21
+Processing Package: 22
+Finish Processing Package: 22
+Processing Package: 23
+Finish Processing Package: 23
+Processing Package: 24
+Finish Processing Package: 24
+Processing Package: 25
+Finish Processing Package: 25
+Processing Package: 26
+Finish Processing Package: 26
+Processing Package: 27
+Finish Processing Package: 27
+Processing Package: 28
+Finish Processing Package: 28
+Processing Package: 29
+Finish Processing Package: 29
+Processing Package: 30
+Finish Processing Package: 30
+Processing Package: 31
+Finish Processing Package: 31
+Processing Package: 32
+Finish Processing Package: 32
+Processing Package: 33
+Finish Processing Package: 33
+Processing Package: 34
+Finish Processing Package: 34
+Processing Package: 35
+Finish Processing Package: 35
+Processing Package: 36
+Finish Processing Package: 36
+Processing Package: 37
+Finish Processing Package: 37
+Processing Package: 38
+Finish Processing Package: 38
+Processing Package: 39
+Finish Processing Package: 39
+Processing Package: 40
+Finish Processing Package: 40
+Processing Package: 41
+Finish Processing Package: 41
+Processing Package: 42
+Finish Processing Package: 42
+Processing Package: 43
+Finish Processing Package: 43
+Processing Package: 44
+Finish Processing Package: 44
+Processing Package: 45
+Finish Processing Package: 45
+Processing Package: 46
+Finish Processing Package: 46
+Processing Package: 47
+Finish Processing Package: 47
+Processing Package: 48
+Finish Processing Package: 48
+Processing Package: 49
+Finish Processing Package: 49
+Processing Package: 50
+Finish Processing Package: 50
+Processing Package: 51
+Finish Processing Package: 51
+Processing Package: 52
+Finish Processing Package: 52
+Processing Package: 53
+Finish Processing Package: 53
+Processing Package: 54
+Finish Processing Package: 54
+Processing Package: 55
+Finish Processing Package: 55
+Processing Package: 56
+Finish Processing Package: 56
+Processing Package: 57
+Finish Processing Package: 57
+Processing Package: 58
+Finish Processing Package: 58
+Processing Package: 59
+Finish Processing Package: 59
+Processing Package: 60
+Finish Processing Package: 60
+Processing Package: 61
+Finish Processing Package: 61
+Processing Package: 62
+Finish Processing Package: 62
+Processing Package: 63
+Finish Processing Package: 63
+Processing Package: 64
+Finish Processing Package: 64
+Processing Package: 65
+Finish Processing Package: 65
+Processing Package: 66
+Finish Processing Package: 66
+Processing Package: 67
+Finish Processing Package: 67
+Processing Package: 68
+Finish Processing Package: 68
+Processing Package: 69
+Finish Processing Package: 69
+Processing Package: 70
+Finish Processing Package: 70
+Processing Package: 71
+Finish Processing Package: 71
+Processing Package: 72
+Finish Processing Package: 72
+Processing Package: 73
+Finish Processing Package: 73
+Processing Package: 74
+Finish Processing Package: 74
+Processing Package: 75
+Finish Processing Package: 75
+Processing Package: 76
+Finish Processing Package: 76
+Processing Package: 77
+Finish Processing Package: 77
+Processing Package: 78
+Finish Processing Package: 78
+Processing Package: 79
+Finish Processing Package: 79
+Processing Package: 80
+Finish Processing Package: 80
+Processing Package: 81
+Finish Processing Package: 81
+Processing Package: 82
+Finish Processing Package: 82
+Processing Package: 83
+Finish Processing Package: 83
+Processing Package: 84
+Finish Processing Package: 84
+Processing Package: 85
+Finish Processing Package: 85
+Processing Package: 86
+Finish Processing Package: 86
+Processing Package: 87
+Finish Processing Package: 87
+Processing Package: 88
+Finish Processing Package: 88
+Processing Package: 89
+Finish Processing Package: 89
+Processing Package: 90
+Finish Processing Package: 90
+Processing Package: 91
+Finish Processing Package: 91
+Processing Package: 92
+Finish Processing Package: 92
+Processing Package: 93
+Finish Processing Package: 93
+Processing Package: 94
+Finish Processing Package: 94
+Processing Package: 95
+Finish Processing Package: 95
+Processing Package: 96
+Finish Processing Package: 96
+Processing Package: 97
+Finish Processing Package: 97
+Processing Package: 98
+Finish Processing Package: 98
+Processing Package: 99
+Finish Processing Package: 99
+Processing Package: 100
+Finish Processing Package: 100
+Processing Package: 101
+Finish Processing Package: 101
+Processing Package: 102
+Finish Processing Package: 102
+Processing Package: 103
+Finish Processing Package: 103
+Processing Package: 104
+Finish Processing Package: 104
+Processing Package: 105
+Finish Processing Package: 105
+Processing Package: 106
+Finish Processing Package: 106
+Processing Package: 107
+Finish Processing Package: 107
+Processing Package: 108
+Finish Processing Package: 108
+Processing Package: 109
+Finish Processing Package: 109
+Processing Package: 110
+Finish Processing Package: 110
+Processing Package: 111
+Finish Processing Package: 111
+Processing Package: 112
+Finish Processing Package: 112
+Processing Package: 113
+Finish Processing Package: 113
+Processing Package: 114
+Finish Processing Package: 114
+Processing Package: 115
+Finish Processing Package: 115
+Processing Package: 116
+Finish Processing Package: 116
+Processing Package: 117
+Finish Processing Package: 117
+Processing Package: 118
+Finish Processing Package: 118
+Processing Package: 119
+Finish Processing Package: 119
+Processing Package: 120
+Finish Processing Package: 120
+Processing Package: 121
+Finish Processing Package: 121
+Processing Package: 122
+Finish Processing Package: 122
+Processing Package: 123
+Finish Processing Package: 123
+Processing Package: 124
+Finish Processing Package: 124
+Processing Package: 125
+Finish Processing Package: 125
+Processing Package: 126
+Finish Processing Package: 126
+Processing Package: 127
+Finish Processing Package: 127
+Processing Package: 128
+Finish Processing Package: 128
+Processing Package: 129
+Finish Processing Package: 129
+Processing Package: 130
+Finish Processing Package: 130
+Processing Package: 131
+Finish Processing Package: 131
+Processing Package: 132
+Finish Processing Package: 132
+Processing Package: 133
+Finish Processing Package: 133
+Processing Package: 134
+Finish Processing Package: 134
+Processing Package: 135
+Finish Processing Package: 135
+Processing Package: 136
+Finish Processing Package: 136
+Processing Package: 137
+Finish Processing Package: 137
+Processing Package: 138
+Finish Processing Package: 138
+Processing Package: 139
+Finish Processing Package: 139
+Processing Package: 140
+Finish Processing Package: 140
+Processing Package: 141
+Finish Processing Package: 141
+Processing Package: 142
+Finish Processing Package: 142
+Processing Package: 143
+Finish Processing Package: 143
+Processing Package: 144
+Finish Processing Package: 144
+Processing Package: 145
+Finish Processing Package: 145
+Processing Package: 146
+Finish Processing Package: 146
+Processing Package: 147
+Finish Processing Package: 147
+Processing Package: 148
+Finish Processing Package: 148
+Processing Package: 149
+Finish Processing Package: 149
+Processing Package: 150
+Finish Processing Package: 150
+Processing Package: 151
+Finish Processing Package: 151
+Processing Package: 152
+Finish Processing Package: 152
+Processing Package: 153
+Finish Processing Package: 153
+Processing Package: 154
+Finish Processing Package: 154
+Processing Package: 155
+Finish Processing Package: 155
+Processing Package: 156
+Finish Processing Package: 156
+Processing Package: 157
+Finish Processing Package: 157
+Processing Package: 158
+Finish Processing Package: 158
+Processing Package: 159
+Finish Processing Package: 159
+Processing Package: 160
+Finish Processing Package: 160
+Processing Package: 161
+Finish Processing Package: 161
+Processing Package: 162
+Finish Processing Package: 162
+Processing Package: 163
+Finish Processing Package: 163
+Processing Package: 164
+Finish Processing Package: 164
+Processing Package: 165
+Finish Processing Package: 165
+Processing Package: 166
+Finish Processing Package: 166
+Processing Package: 167
+Finish Processing Package: 167
+Processing Package: 168
+Finish Processing Package: 168
+Processing Package: 169
+Finish Processing Package: 169
+Processing Package: 170
+Finish Processing Package: 170
+Processing Package: 171
+Finish Processing Package: 171
+Processing Package: 172
+Finish Processing Package: 172
+Processing Package: 173
+Finish Processing Package: 173
+Processing Package: 174
+Finish Processing Package: 174
+Processing Package: 175
+Finish Processing Package: 175
+Processing Package: 176
+Finish Processing Package: 176
+Processing Package: 177
+Finish Processing Package: 177
+Processing Package: 178
+Finish Processing Package: 178
+Processing Package: 179
+Finish Processing Package: 179
+Processing Package: 180
+Finish Processing Package: 180
+Processing Package: 181
+Finish Processing Package: 181
+Processing Package: 182
+Finish Processing Package: 182
+Processing Package: 183
+Finish Processing Package: 183
+Processing Package: 184
+Finish Processing Package: 184
+Processing Package: 185
+Finish Processing Package: 185
+Processing Package: 186
+Finish Processing Package: 186
+Processing Package: 187
+Finish Processing Package: 187
+Processing Package: 188
+Finish Processing Package: 188
+Processing Package: 189
+Finish Processing Package: 189
+Processing Package: 190
+Finish Processing Package: 190
+Processing Package: 191
+Finish Processing Package: 191
+Processing Package: 192
+Finish Processing Package: 192
+Processing Package: 193
+Finish Processing Package: 193
+Processing Package: 194
+Finish Processing Package: 194
+Processing Package: 195
+Finish Processing Package: 195
+Processing Package: 196
+Finish Processing Package: 196
+Processing Package: 197
+Finish Processing Package: 197
+Processing Package: 198
+Finish Processing Package: 198
+Processing Package: 199
+Finish Processing Package: 199
+Processing Package: 200
+Finish Processing Package: 200
+Processing Package: 201
+Finish Processing Package: 201
+Processing Package: 202
+Finish Processing Package: 202
+Processing Package: 203
+Finish Processing Package: 203
+Processing Package: 204
+Finish Processing Package: 204
+Processing Package: 205
+Finish Processing Package: 205
+Processing Package: 206
+Finish Processing Package: 206
+Processing Package: 207
+Finish Processing Package: 207
+Processing Package: 208
+Finish Processing Package: 208
+Processing Package: 209
+Finish Processing Package: 209
+Processing Package: 210
+Finish Processing Package: 210
+Processing Package: 211
+Finish Processing Package: 211
+Processing Package: 212
+Finish Processing Package: 212
+Processing Package: 213
+Finish Processing Package: 213
+Processing Package: 214
+Finish Processing Package: 214
+Processing Package: 215
+Finish Processing Package: 215
+Processing Package: 216
+Finish Processing Package: 216
+Processing Package: 217
+Finish Processing Package: 217
+Processing Package: 218
+Finish Processing Package: 218
+Processing Package: 219
+Finish Processing Package: 219
+Processing Package: 220
+Finish Processing Package: 220
+Processing Package: 221
+Finish Processing Package: 221
+Processing Package: 222
+Finish Processing Package: 222
+Processing Package: 223
+Finish Processing Package: 223
+Processing Package: 224
+Finish Processing Package: 224
+Processing Package: 225
+Finish Processing Package: 225
+Processing Package: 226
+Finish Processing Package: 226
+Processing Package: 227
+Finish Processing Package: 227
+Processing Package: 228
+Finish Processing Package: 228
+Processing Package: 229
+Finish Processing Package: 229
+Processing Package: 230
+Finish Processing Package: 230
+Processing Package: 231
+Finish Processing Package: 231
+Processing Package: 232
+Finish Processing Package: 232
+Processing Package: 233
+Finish Processing Package: 233
+Processing Package: 234
+Finish Processing Package: 234
+Processing Package: 235
+Finish Processing Package: 235
+Processing Package: 236
+Finish Processing Package: 236
+Processing Package: 237
+Finish Processing Package: 237
+Processing Package: 238
+Finish Processing Package: 238
+Processing Package: 239
+Finish Processing Package: 239
+Processing Package: 240
+Finish Processing Package: 240
+Processing Package: 241
+Finish Processing Package: 241
+Processing Package: 242
+Finish Processing Package: 242
+Processing Package: 243
+Finish Processing Package: 243
+Processing Package: 244
+Finish Processing Package: 244
+Processing Package: 245
+Finish Processing Package: 245
+Processing Package: 246
+Finish Processing Package: 246
+Processing Package: 247
+Finish Processing Package: 247
+Processing Package: 248
+Finish Processing Package: 248
+Processing Package: 249
+Finish Processing Package: 249
+Processing Package: 250
+Finish Processing Package: 250
+a BigImageBuilder
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Uploading the image)
+[Pipeline] sh
++ zip -9 largeImage.zip largeImage.changes largeImage.image Pharo9.0-64bit-e1bb0fb.sources
+  adding: largeImage.changes (deflated 99%)
+  adding: largeImage.image (deflated 89%)
+  adding: Pharo9.0-64bit-e1bb0fb.sources (deflated 81%)
+[Pipeline] sshagent
+[ssh-agent] Using credentials filepharosync (files.pharo.org)
+[ssh-agent] Looking for ssh-agent implementation...
+[ssh-agent]   Exec ssh-agent (binary ssh-agent on a remote machine)
+$ ssh-agent
+SSH_AUTH_SOCK=/tmp/ssh-Sun4DPjZdWvm/agent.10574
+SSH_AGENT_PID=10576
+Running ssh-add (command line suppressed)
+Identity added: /builds/workspace/latest-large-image@tmp/private_key_4826672908896215013.key (/builds/workspace/latest-large-image@tmp/private_key_4826672908896215013.key)
+[ssh-agent] Started.
+[Pipeline] {
+[Pipeline] sh
++ scp -o StrictHostKeyChecking=no largeImage.zip pharoorgde@ssh.cluster023.hosting.ovh.net:/home/pharoorgde/files/image/90/largeImage.zip
+[Pipeline] }
+$ ssh-agent -k
+unset SSH_AUTH_SOCK;
+unset SSH_AGENT_PID;
+echo Agent pid 10576 killed;
+[ssh-agent] Stopped.
+[Pipeline] // sshagent
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+[Checks API] No suitable checks publisher found.
+Finished: SUCCESS
